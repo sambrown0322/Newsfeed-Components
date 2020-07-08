@@ -136,8 +136,11 @@ function articleMaker(articleData){
   articleTitle.textContent = articleData.title
   date.textContent = articleData.date
   paragraph1.textContent = articleData.firstParagraph
+  
   paragraph2.textContent = articleData.secondParagraph
+  
   paragraph3.textContent = articleData.thirdParagraph
+  
   expand.textContent = "+"
 
   expand.addEventListener("click", () => {
@@ -161,6 +164,3 @@ data.forEach(object => {
   const actualData = articleMaker(object)
   articles.appendChild(actualData)
 })
-
-
-
