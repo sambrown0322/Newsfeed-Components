@@ -111,3 +111,56 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+const articles = document.querySelector(".articles")
+
+function articleMaker(articleData){
+  const article = document.createElement("div");
+  const articleTitle = document.createElement("h2")
+  const date = document.createElement("p")
+  const paragraph1 = document.createElement("p")
+  const paragraph2 = document.createElement("p")
+  const paragraph3 = document.createElement("p")
+  const expand = document.createElement("span")
+
+  article.appendChild(articleTitle)
+  article.appendChild(date)
+  article.appendChild(paragraph1)
+  article.appendChild(paragraph2)
+  article.appendChild(paragraph3)
+  article.appendChild(expand)
+  
+  article.classList.add("article")
+  date.classList.add("date")
+  expand.classList.add("expandButton")
+
+  articleTitle.textContent = articleData.title
+  date.textContent = articleData.date
+  paragraph1.textContent = articleData.firstParagraph
+  
+  paragraph2.textContent = articleData.secondParagraph
+  
+  paragraph3.textContent = articleData.thirdParagraph
+  
+  expand.textContent = "+"
+
+  expand.addEventListener("click", () => {
+    article.classList.toggle("article-open")
+  })
+
+  
+  return article
+}
+console.log(articleMaker(data))
+
+data.push({
+  title: "League makes me want to KMS",
+  date: "Literally every day",
+  firstParagraph: "I carry every game and my team sucks",
+  secondParagraph: "I had 23 assists on Morg support and still lost",
+  thirdParagraph: "I'm hardstuck",
+})
+
+data.forEach(object => {
+  const actualData = articleMaker(object)
+  articles.appendChild(actualData)
+})
